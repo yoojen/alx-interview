@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Pascal triangle """
 
+
 def pascal_triangle(n):
     """returns list of lists"""
     triangle_elements = []
@@ -11,6 +12,7 @@ def pascal_triangle(n):
                 temp_elements.append(1)
             else:
                 temp_elements.append(
-                    triangle_elements[row-1][column-1] + triangle_elements[row-1][column])
+                    triangle_elements[row-1][column-1] + triangle_elements
+                    [row-1][column])
         triangle_elements.append(temp_elements)
     return triangle_elements
