@@ -8,6 +8,9 @@ def minOperations(n):
     copy, paste = 0, 0
     characters, previous = 1, 0
 
+    if n < 0 or n == 0:
+        return 0
+
     while characters != n:
         if n % characters == 0:
             characters = characters * 2
