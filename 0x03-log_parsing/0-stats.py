@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-"""performing handling loggings and extracting valuable informations"""
 import sys
 
 
@@ -21,7 +20,7 @@ def main():
                 print(f"File size:  {total_size}")
                 print_dic(status)
 
-    except KeyboardInterrupt:
+    finally:
         print(f"File Size: {total_size}")
         print_dic(status)
 
