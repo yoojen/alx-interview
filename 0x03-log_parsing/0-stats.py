@@ -23,6 +23,7 @@ def main():
 
     except KeyboardInterrupt:
         print(f"File Size: {total_size}")
+        print_dic(status)
 
 
 def print_dic(list_of_status):
