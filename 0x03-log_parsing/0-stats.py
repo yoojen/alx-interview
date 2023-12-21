@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""collect data from stdin and extract valuable information"""
 import sys
 
 
