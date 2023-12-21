@@ -16,7 +16,8 @@ def print_dic(list_of_status):
     sorted_status = dict(sorted(status_dict.items()))
 
     for k, v in sorted_status.items():
-        print("{}: {}".format(k, v))
+        if k != 0:
+            print("{}: {}".format(k, v))
 
 
 status = []
