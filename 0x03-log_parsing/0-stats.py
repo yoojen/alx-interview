@@ -10,6 +10,7 @@ def print_dic(list_of_status):
     of data on the screen
     """
     status_dict = {}
+
     for status in list_of_status:
         if status_dict.get(status):
             status_dict[status] += 1
@@ -22,10 +23,9 @@ def print_dic(list_of_status):
 
 
 status = []
-
+count = 0
+total_size = 0
 try:
-    count = 0
-    total_size = 0
     for lines in sys.stdin:
         parsed = lines.split(" ")
         if len(parsed) == 9:
