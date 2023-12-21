@@ -13,13 +13,14 @@ def main():
         total_size = 0
         for lines in sys.stdin:
             parsed = lines.split(" ")
-            count = count + 1
-            total_size = total_size + int(parsed[8])
-            status_code = int(parsed[7])
-            status.append(status_code)
-            if count % 10 == 0:
-                print(f"File size: {total_size}")
-                print_dic(status)
+            if len(parsed) == 9:
+                count = count + 1
+                total_size = total_size + int(parsed[8])
+                status_code = int(parsed[7])
+                status.append(status_code)
+                if count % 10 == 0:
+                    print(f"File size: {total_size}")
+                    print_dic(status)
 
     except KeyboardInterrupt:
         print(f"File Size: {total_size}")
