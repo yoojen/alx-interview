@@ -1,41 +1,48 @@
 #!/usr/bin/python3
+
 import sys
 
 
-def print_dic(list_of_status):
+def print_dictionary(status_dictionary, file_size):
     """
-    counting the occurence of key and initialize printing
-    of data on the screen
+    print dictionary with keys sorted in ascending order
     """
-    status_dict = {}
-    for status in list_of_status:
-        if status_dict.get(status):
-            status_dict[status] += 1
-        else:
-            status_dict[status] = 1
-    sorted_status = dict(sorted(status_dict.items()))
-
-    for k, v in sorted_status.items():
-        if k != 0:
-            print("{}: {}".format(k, v))
+    print("File size: {}".format(file_size))
+    for key, value in sorted(status_dictionary.items()):
+        if value != 0:
+            print("{}: {}".format(key, value))
 
 
-status = []
-count = 0
-total_size = 0
+file_size = 0
+code = 0
+counter = 0
+status_dictionary = {"200": 0,
+                     "301": 0,
+                     "400": 0,
+                     "401": 0,
+                     "403": 0,
+                     "404": 0,
+                     "405": 0,
+                     "500": 0}
 
 try:
-    for lines in sys.stdin:
-        parsed = lines.split()
-        if len(parsed) == 9:
-            count = count + 1
-            total_size = total_size + int(parsed[8])
-            status_code = int(parsed[7])
-            status.append(status_code)
-            if count % 10 == 0:
-                print("File size: {}".format(total_size))
-                print_dic(status)
+    for line in sys.stdin:
+        parsed = line.split()
+        parsed = parsed[::-1]
+
+        if len(parsed) > 2:
+            counter += 1
+
+            if counter <= 10:
+                file_size += int(parsed[0])
+                code = parsed[1]
+
+                if (code in status_dictionary.keys()):
+                    status_dictionary[code] += 1
+
+            if (counter == 10):
+                print_dictionary(status_dictionary, file_size)
+                counter = 0
 
 finally:
-    print("File Size: {}".format(total_size))
-    print_dic(status)
+    print_dictionary(status_dictionary, file_size)
