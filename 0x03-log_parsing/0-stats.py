@@ -17,10 +17,10 @@ def main():
             status_code = int(parsed[7])
             status.append(status_code)
             if count % 10 == 0:
-                print(f"File size:  {total_size}")
+                print(f"File size: {total_size}")
                 print_dic(status)
 
-    finally:
+    except KeyboardInterrupt:
         print(f"File Size: {total_size}")
         print_dic(status)
 
