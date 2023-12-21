@@ -25,7 +25,7 @@ total_size = 0
 
 try:
     for lines in sys.stdin:
-        parsed = lines.split(" ")
+        parsed = lines.split()
         if len(parsed) == 9:
             count = count + 1
             total_size = total_size + int(parsed[8])
