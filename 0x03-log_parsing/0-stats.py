@@ -1,30 +1,7 @@
 #!/usr/bin/python3
 """collect data from stdin and extract valuable information"""
+
 import sys
-
-
-def main():
-    """get data from stdin printing whole data on the screen"""
-
-    status = []
-
-    try:
-        count = 0
-        total_size = 0
-        for lines in sys.stdin:
-            parsed = lines.split(" ")
-            if len(parsed) == 9:
-                count = count + 1
-                total_size = total_size + int(parsed[8])
-                status_code = int(parsed[7])
-                status.append(status_code)
-                if count % 10 == 0:
-                    print(f"File size: {total_size}")
-                    print_dic(status)
-
-    except KeyboardInterrupt:
-        print(f"File Size: {total_size}")
-        print_dic(status)
 
 
 def print_dic(list_of_status):
@@ -44,5 +21,22 @@ def print_dic(list_of_status):
         print(f"{k}: {v}")
 
 
-if __name__ == "__main__":
-    main()
+status = []
+
+try:
+    count = 0
+    total_size = 0
+    for lines in sys.stdin:
+        parsed = lines.split(" ")
+        if len(parsed) == 9:
+            count = count + 1
+            total_size = total_size + int(parsed[8])
+            status_code = int(parsed[7])
+            status.append(status_code)
+            if count % 10 == 0:
+                print(f"File size: {total_size}")
+                print_dic(status)
+
+except KeyboardInterrupt:
+    print(f"File Size: {total_size}")
+    print_dic(status)
