@@ -24,7 +24,7 @@ def print_dictionary(dict_sc, file_size):
     print("File size: {}".format(file_size))
     for k, v in sorted(dict_sc.items()):
         if v != 0:
-            print("{}: {}".format(k, k))
+            print("{}: {}".format(k, v))
 
 
 try:
