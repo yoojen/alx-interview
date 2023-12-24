@@ -31,9 +31,11 @@ dict_of_status = {
 try:
     for lines in sys.stdin:
         parsed = lines.split()
-        count += 1
-        total_size += int(parsed[8])
-        status_code = str(parsed[7])
+        if len(parsed) > 2:
+            count += 1
+        if count <= 10:
+            total_size += int(parsed[8])
+            status_code = str(parsed[7])
         if status_code in dict_of_status.keys():
             dict_of_status[status_code] += 1
         if count == 10:
