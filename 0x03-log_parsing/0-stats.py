@@ -8,10 +8,10 @@ def print_dict(dict_of_status, total_size):
     of data on the screen
     """
     sorted_status = dict(sorted(dict_of_status.items()))
-    print(f"File Size: {total_size}")
+    print("File Size: {}".format(total_size))
     for k, v in sorted_status.items():
         if v != 0:
-            print(f"{k}: {v}")
+            print("{}: {}".format(k, v))
 
 
 count = 0
