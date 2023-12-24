@@ -1,45 +1,48 @@
 #!/usr/bin/python3
+
 import sys
 
 
-def print_dict(dict_of_status, total_size):
-    """
-    counting the occurence of key and initialize printing
-    of data on the screen
-    """
-    sorted_status = dict(sorted(dict_of_status.items()))
-    print("File Size: {}".format(total_size))
-    for k, v in sorted_status.items():
-        if v != 0:
-            print("{}: {}".format(k, v))
-
-
-count = 0
-total_size = 0
+file_size = 0
 status_code = 0
-dict_of_status = {
-        "200": 0,
-        "301": 0,
-        "400": 0,
-        "401": 0,
-        "403": 0,
-        "404": 0,
-        "405": 0,
-        "500": 0
-        }
+counter = 0
+dict_sc = {"200": 0,
+           "301": 0,
+           "400": 0,
+           "401": 0,
+           "403": 0,
+           "404": 0,
+           "405": 0,
+           "500": 0}
+
+
+def print_dictionary(dict_sc, file_size):
+    """
+    print the dict on the screen
+    """
+
+    print("File size: {}".format(file_size))
+    for k, v in sorted(dict_sc.items()):
+        if v != 0:
+            print("{}: {}".format(k, k))
+
 
 try:
-    for lines in sys.stdin:
-        parsed = lines.split()
+    for line in sys.stdin:
+        parsed = line.split()
+        parsed = parsed[::-1]
+
         if len(parsed) > 2:
-            count += 1
-        if count <= 10:
-            total_size += int(parsed[8])
-            status_code = str(parsed[7])
-        if status_code in dict_of_status.keys():
-            dict_of_status[status_code] += 1
-        if count == 10:
-            print_dict(dict_of_status, total_size)
-            count = 0
+            counter += 1
+        if counter <= 10:
+            file_size += int(parsed[0])
+            status_code = parsed[1]
+        if (status_code in dict_sc.keys()):
+            dict_sc[status_code] += 1
+
+        if (counter == 10):
+            print_dictionary(dict_sc, file_size)
+            counter = 0
+
 finally:
-    print_dict(dict_of_status, total_size)
+    print_dictionary(dict_sc, file_size)
