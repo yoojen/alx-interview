@@ -14,7 +14,8 @@ def print_dic(list_of_status):
         else:
             status_dict[status] = 1
     sorted_status = dict(sorted(status_dict.items()))
-
+    
+    print(f"File Size: {total_size}")
     for k, v in sorted_status.items():
         print(f"{k}: {v}")
 
@@ -32,9 +33,7 @@ try:
             status_code = int(parsed[7])
             status.append(status_code)
             if count % 10 == 0:
-                print(f"File size: {total_size}")
                 print_dic(status)
 
 finally:
-    print(f"File Size: {total_size}")
     print_dic(status)
