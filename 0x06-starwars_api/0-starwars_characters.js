@@ -1,10 +1,10 @@
 #!/usr/bin/node
 const request = require('request');
 
-const base_url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
-request(base_url, function (error, response, body) {
+const BaseUrl = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
+request(BaseUrl, function (error, response, body) {
   if (error) throw error;
-  if (response.statusCode == 200) {
+  if (response.statusCode === 200) {
     const characters = JSON.parse(body).characters;
     loadCharacters(characters);
   }
@@ -15,12 +15,12 @@ const loadCharacters = (charactersObj) => {
       if (character) {
         request(character, (error, response, body) => {
           if (error) throw error;
-          if (response.statusCode == 200) {
+          if (response.statusCode === 200) {
             console.log(JSON.parse(body).name);
           }
         });
       } else {
-        throw 'Found nothing';
+        throw new Error('Found nothing');
       }
     }
   }
