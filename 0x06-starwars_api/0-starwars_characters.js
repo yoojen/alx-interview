@@ -1,9 +1,9 @@
 #!/usr/bin/node
 
-const request = require("request");
+const request = require('request');
 
 request(
-  "https://swapi-api.hbtn.io/api/films/" + process.argv[2],
+  'https://swapi-api.hbtn.io/api/films/' + process.argv[2],
   function (error, res, body) {
     if (error) throw error;
     const characters = JSON.parse(body).characters;
