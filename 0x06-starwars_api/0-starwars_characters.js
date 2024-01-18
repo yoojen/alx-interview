@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const request = require("request");
+const request = require('request');
 
 const base_url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
 request(base_url, function (error, response, body) {
@@ -20,7 +20,7 @@ const loadCharacters = (charactersObj) => {
           }
         });
       } else {
-        throw "Found nothing";
+        throw 'Found nothing';
       }
     }
   }
